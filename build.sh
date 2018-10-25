@@ -65,19 +65,13 @@ then
   CROSS_COMPILE="ccache $CROSS_COMPILE"
 fi
 
-# Export ARCH-arm64
-echo "${blu}Building for rosy?${txtrst}"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) export ARCH=arm64 && export SUBARCH=arm64 && make rosy_defconfig; break;;
-        No ) break;;
-    esac
-done
+# Export ARCH-arm64 & Launch rosy
+export ARCH=arm64 && export SUBARCH=arm64 && make rosy_defconfig
 
 # Build Process
 echo -e "> Opening rosy_config file...\n"
-  CROSS_COMPILE=$CROSS_COMPILE make -j$( nproc --all )
 echo -e "> Starting kernel compilation using rosy_defconfig file...\n"
+  CROSS_COMPILE=$CROSS_COMPILE make -j$( nproc --all )
 
 start=$SECONDS
 
