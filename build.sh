@@ -78,8 +78,8 @@ start=$SECONDS
 # Get current kernel version
 KERNEL_VERSION=$(head -n3 Makefile | sed -E 's/.*(^\w+\s[=]\s)//g' | xargs | sed -E 's/(\s)/./g')
 echo -e "\n\n> Packing Rosy Kernel v$KERNEL_VERSION\n\n"
-# Pack the kernel as a flashable TWRP zip. Oreo Edition
-~/AnyKernel2/build.sh $KERNEL_VERSION O
+# Pack the kernel as a flashable TWRP zip. PIE Edition
+~/AnyKernel2/build.sh $KERNEL_VERSION PIE
 
 end=$SECONDS
 duration=$(( end - start ))
